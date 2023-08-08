@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8080",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -19,12 +19,14 @@
     "argon2": "^0.30.3",
     "axios": "^1.4.0",
     "cookie": "^0.5.0",
+    "dotenv": "^16.3.1",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.5",
     "formidable": "^3.4.0",
     "jsonwebtoken": "^9.0.0",
     "multer": "^1.4.5-lts.1",
     "next": "13.4.5",
+    "next-auth": "^4.22.1",
     "next-connect": "^1.0.0",
     "next-redux-wrapper": "^8.1.0",
     "nextjs-progressbar": "^0.0.16",
@@ -46,6 +48,7 @@
     "@types/jsonwebtoken": "^9.0.2",
     "@types/multer": "^1.4.7",
     "babel-plugin-import": "^1.13.6",
+    "mini-css-extract-plugin": "^2.7.6",
     "prisma": "^4.15.0",
     "sass": "^1.63.4"
   }

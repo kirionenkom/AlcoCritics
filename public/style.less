@@ -119,6 +119,26 @@ body {
         opacity: 0.4;
       }
     }
+
+    .login-image {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      width: 28px;
+      height: 28px;
+      background: #2c810d;
+      border-radius: 10px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:active {
+        opacity: 0.4;
+      }
+    }
   }
 
 }
@@ -388,6 +408,7 @@ main {
         .item-image {
           max-width: 191px;
           max-height: 232px;
+          border-radius: 15px;
         }
       }
 
@@ -409,20 +430,23 @@ main {
           font-size: 20px;
           line-height: 20px;
           color: #1A1F16;
-          margin: 0;
-
-          .taste {
-            color: #41443e;
-
-            &:hover {
-              opacity: 1;
-            }
-          }
+          margin: 0 0 10px;
         }
+      }
+      .taste {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+        color: #41443e;
+        margin: 0;
+        padding: 0;
+
       }
 
       .item-rate {
         margin: 0;
+        padding: 0;
         font-style: normal;
         font-weight: 400;
         font-size: 16px;
@@ -560,5 +584,12 @@ main {
     }
   }
 
+  .message-container {
+    justify-content: center;
+    .message {
+      font-size: 48px;
+      text-align: center;
+    }
+  }
 }
 

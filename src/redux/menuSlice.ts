@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 type Menu = {
 	isSortMenuOpened: boolean,
-	isAlcoMenuOpened: boolean,
+	isAlcoholMenuOpened: boolean,
 };
 
 const initialState: Menu = {
 	isSortMenuOpened: false,
-	isAlcoMenuOpened: false,
+	isAlcoholMenuOpened: false,
 };
 
 const menuSlice = createSlice({
@@ -15,15 +15,15 @@ const menuSlice = createSlice({
 	initialState: initialState,
 	reducers: {
 		openCloseSort(state) {
-			state.isAlcoMenuOpened = false;
+			state.isAlcoholMenuOpened = false;
 			state.isSortMenuOpened = !state.isSortMenuOpened;
 		},
-		openCloseAlco(state) {
+		openCloseAlcohol(state) {
 			state.isSortMenuOpened = false;
-			state.isAlcoMenuOpened = !state.isAlcoMenuOpened;
+			state.isAlcoholMenuOpened = !state.isAlcoholMenuOpened;
 		},
 	},
 });
 
-export const { openCloseSort, openCloseAlco } = menuSlice.actions;
+export const { openCloseSort, openCloseAlcohol } = menuSlice.actions;
 export default menuSlice.reducer;

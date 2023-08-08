@@ -1,7 +1,7 @@
 import React from 'react';
-import { Rate } from 'antd';
-import { useAppDispatch } from '@/redux/hooks';
-import {changeRate, updateDrink} from '@/redux/drinksSlice';
+import {Rate} from 'antd';
+import {useAppDispatch} from '@/redux/hooks';
+import {updateDrink} from '@/redux/drinksSlice';
 import {Alcohol} from "@prisma/client";
 
 interface DrinkCardProps {

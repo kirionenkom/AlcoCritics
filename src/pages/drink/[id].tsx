@@ -20,7 +20,8 @@ export default function DrinkPage() {
 		{drink && id && (
 			<>
 				<DrinkCard drink={drink}/>
-				<Button type="primary" danger onClick={() => setConfirmModalOpen(true)}>
+				<Button type="primary" danger onClick={() => setConfirmModalOpen(true)}
+				        style={{position: 'fixed', top: "8% ", right: "10%"}}>
 					Удалить
 				</Button>
 				<Modal

@@ -1,5 +1,6 @@
 import {NextApiRequest, NextApiResponse} from "next";
 import prisma from "@/utils/prisma";
+const fs = require('fs')
 
 export default async function Id(req: NextApiRequest, res: NextApiResponse) {
 	try {
@@ -8,11 +9,16 @@ export default async function Id(req: NextApiRequest, res: NextApiResponse) {
 			id = id[0]
 		}
 		const drink = await prisma.alcohol.delete({where: {id}})
+		fs.unlink('public' + drink.image_path, (err: any) => {
+			if (err) {
+				res.status(500).json("Не удалось удалить изображение")
+			}
+		})
 		if (!drink) {
-			res.status(500).json("Ошибка 1")
+			res.status(500).json("Не удалось найти напиток")
 		}
 		res.json(drink)
 	} catch (error) {
-		res.status(500).json("Ошибка 2")
+		res.status(500).json("Не удалось удалить данные")
 	}
 }

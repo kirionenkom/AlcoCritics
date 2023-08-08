@@ -1,6 +1,6 @@
-import {Form, Input} from "antd";
-import React from "react";
-
+import { Form, Input } from 'antd';
+import React from 'react';
+import TextArea from 'antd/lib/input/TextArea';
 
 export default function Description() {
 	return (
@@ -8,8 +8,9 @@ export default function Description() {
 			name="description"
 			label="Описание"
 			required
-			rules={[{ required: true }]}>
-			<Input />
+			rules={[{ required: true }]}
+		>
+			<TextArea autoSize={{ minRows: 4, maxRows: 4 }} />
 		</Form.Item>
 	);
 }

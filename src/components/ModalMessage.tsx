@@ -29,7 +29,7 @@ const getContent = (modalType: ModalType,
 				case ModalType.Update:
 					return {
 						title: 'Успешно',
-						content: <><p>Данные успешно обновлены</p><p>Нажмите ОК для выхода на главную страницу</p></>,
+						content: <><p>Данные успешно обновлены</p><p>Нажмите ОК, чтобы закрыть</p></>,
 						footer: [<Button onClick={() => {
 							setOpen(false)
 							dispatch(setLoadingNone())

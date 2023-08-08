@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { changeAlcoholType } from '@/redux/drinksSlice';
 import {useEscapeKeyDown} from "@/utils/hooks";
-import { openCloseAlco } from '@/redux/menuSlice';
+import { openCloseAlcohol } from '@/redux/menuSlice';
 import {AlcoholType} from "@/interfaces/interfaces";
 
 export default function AlcoTypeSelectionMenu() {
@@ -11,7 +11,7 @@ export default function AlcoTypeSelectionMenu() {
 	const handleChangeAlcoholType = (alcoholType: string) => {
 		dispatch(changeAlcoholType(alcoholType));
 	};
-	useEscapeKeyDown(openCloseAlco);
+	useEscapeKeyDown(openCloseAlcohol);
 
 	return (
 		<div className="alco-types">

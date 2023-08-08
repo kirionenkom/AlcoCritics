@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppDispatch } from '../redux/hooks';
-import { updateSearchRequest } from '../redux/drinksSlice';
+import { useAppDispatch } from '@/redux/hooks';
+import { updateSearchRequest } from '@/redux/drinksSlice';
 
 export default function Search() {
 	const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ export default function Search() {
 					name="search-input"
 					id="search"
 					className="search-input"
-					placeholder="Wine, wiskey, beer..."
+					placeholder="Вино, виски, пиво..."
 					onChange={(event) => {
 						const value = event.currentTarget.value;
 						setTimeout(() => {
