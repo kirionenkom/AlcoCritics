@@ -1,7 +1,6 @@
-import {Button, Form, FormInstance} from "antd";
-import {useEffect, useState} from "react";
-import {FormProps} from "@/components/NewDrinkForm";
-
+import { Button, Form, FormInstance } from 'antd';
+import { useEffect, useState } from 'react';
+import { FormProps } from '@/components/NewDrinkForm';
 
 export default function SubmitButton({ form }: { form: FormInstance }) {
 	const [submittable, setSubmittable] = useState(false);

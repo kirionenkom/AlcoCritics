@@ -1,5 +1,4 @@
 import type { AuthOptions, User } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
 import Credentials from 'next-auth/providers/credentials';
 import prisma from '@/utils/prisma';
 
@@ -19,8 +18,13 @@ export const authConfig: AuthOptions = {
 					where: { email: credentials.email },
 				});
 				if (user && user.password === credentials.password) {
-					const { id, email } = user;
-					return { name: id, email: email } as User;
+					const { id, email, name, image_path } = user;
+					return {
+						id: id,
+						name: name,
+						email: email,
+						image: image_path,
+					} as User;
 				}
 				return null;
 			},

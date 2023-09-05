@@ -2,6 +2,8 @@ import NewDrinkForm from '@/components/NewDrinkForm';
 import { useAppSelector } from '@/redux/hooks';
 import { LoadingStatus, ModalType } from '@/interfaces/interfaces';
 import ModalMessage from '@/components/ModalMessage';
+import Layout from '@/components/layout/layout';
+import { useCheckForSession } from '@/utils/hooks';
 
 const formStyles = {
 	boxShadow: '0px 0 10px rgba(26, 31, 22, 0.3)',
@@ -14,13 +16,18 @@ const formStyles = {
 };
 
 export default function Index() {
-	const loadingStatus = useAppSelector((state) => state.drinks.loadingStatus);
+	useCheckForSession();
+	const { loadingStatus, currentDrink } = useAppSelector(
+		(state) => state.drinks
+	);
 	return (
-		<div style={formStyles}>
-			<NewDrinkForm />
-			{loadingStatus !== LoadingStatus.None && (
-				<ModalMessage modalType={ModalType.Create} />
-			)}
-		</div>
+		<Layout title="Редактировать напиток">
+			<div style={formStyles}>
+				<NewDrinkForm drink={currentDrink} />
+				{loadingStatus !== LoadingStatus.None && (
+					<ModalMessage modalType={ModalType.Create} />
+				)}
+			</div>
+		</Layout>
 	);
 }

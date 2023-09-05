@@ -1,8 +1,7 @@
-import {NextApiRequest, NextApiResponse} from "next";
-import multer from "multer";
-import {Request, Response} from "express";
+import multer from 'multer';
+import { Request, Response } from 'express';
 
-const fs = require('fs')
+const fs = require('fs');
 const upload = multer({dest: 'public/content-images'})
 
 export const config = {

@@ -1,7 +1,7 @@
-import { Upload, Form } from 'antd';
+import { Upload, Form, UploadFile } from 'antd';
 import axios from 'axios';
 import { PlusOutlined } from '@ant-design/icons';
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 
 const normFile = (e: any) => {
 	if (Array.isArray(e)) {
@@ -12,12 +12,18 @@ const normFile = (e: any) => {
 
 interface UploadImageProps {
 	setFile: Dispatch<SetStateAction<any>>;
+	image: string | undefined;
 }
 
-export default function UploadImage({ setFile }: UploadImageProps) {
+export default function UploadImage({ setFile, image }: UploadImageProps) {
+	const fileList = Array<UploadFile>({
+		uid: '-1',
+		name: 'image.png',
+		status: 'done',
+		url: image,
+	});
 	return (
 		<Form.Item
-			name="image_path"
 			label="Изображение"
 			valuePropName="fileList"
 			getValueFromEvent={normFile}
@@ -28,6 +34,7 @@ export default function UploadImage({ setFile }: UploadImageProps) {
 				listType="picture-card"
 				accept="image/png, image/jpeg, image/jpg"
 				maxCount={1}
+				defaultFileList={image ? fileList : []}
 				customRequest={async (req) => {
 					const formData = new FormData();
 					formData.append('image', req.file);

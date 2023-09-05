@@ -1,16 +1,15 @@
-import {Form, Select} from "antd";
-import React from "react";
-import {AlcoholType} from "@/interfaces/interfaces";
-import {InputNumber} from "antd/lib";
+import { Form } from 'antd';
+import React from 'react';
+import { InputNumber } from 'antd/lib';
 
-export default function Price() {
+interface priceProps {
+	price: number | undefined;
+}
+
+export default function Price({ price }: priceProps) {
 	return (
-		<Form.Item
-			name="price"
-			label="Цена"
-			required
-			rules={[{ required: true }]}>
-			<InputNumber />
+		<Form.Item name="price" label="Цена" required rules={[{ required: true }]}>
+			<InputNumber defaultValue={price} />
 		</Form.Item>
 	);
 }

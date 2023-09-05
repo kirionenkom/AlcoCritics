@@ -14,7 +14,8 @@ export default function SortButton() {
 					src="/images/sort.png"
 					alt="Сортировка"
 					className="sort-image"
-					onClick={() => dispatch(openCloseSort())}></img>
+					onClick={() => dispatch(openCloseSort())}
+				></img>
 			</div>
 			{isOpened && <SortTypeMenu />}
 		</>

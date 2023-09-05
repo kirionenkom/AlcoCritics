@@ -14,7 +14,8 @@ export default function AlcoTypeSelectionButton() {
 					src="/images/aclohol.png"
 					alt="Выбор типа"
 					className="type-choose"
-					onClick={() => dispatch(openCloseAlcohol())}></img>
+					onClick={() => dispatch(openCloseAlcohol())}
+				></img>
 			</div>
 			{isOpened && <AlcoTypeSelectionMenu />}
 		</>

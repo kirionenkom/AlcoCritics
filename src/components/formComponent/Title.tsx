@@ -1,14 +1,18 @@
-import {Form, Input} from "antd";
-import React from "react";
+import { Form, Input } from 'antd';
+import React from 'react';
 
-export default function Title() {
+interface titleProps {
+	text: string | undefined | null;
+}
+export default function Title({ text }: titleProps) {
 	return (
 		<Form.Item
 			name="title"
 			label="Название"
 			required
-			rules={[{ required: true }]}>
-			<Input />
+			rules={[{ required: true }]}
+		>
+			<Input defaultValue={text ?? ''} />
 		</Form.Item>
 	);
 }

@@ -1,16 +1,19 @@
-import React, { ReactNode} from "react";
-import Menu from "@/components/Menu";
+import React, { ReactNode } from 'react';
+import Menu from '@/components/menu/Menu';
+import Head from 'next/head';
 
 interface LayoutProps {
-	children: ReactNode
+	children: ReactNode;
+	title: string;
 }
-export default function Layout({children} : LayoutProps) {
+export default function Layout({ children, title }: LayoutProps) {
 	return (
 		<>
-		<Menu/>
-		<main>
-			{children}
-		</main>
+			<Head>
+				<title>{title} | AlcoCritics</title>
+			</Head>
+			<Menu />
+			<main>{children}</main>
 		</>
-	)
+	);
 }

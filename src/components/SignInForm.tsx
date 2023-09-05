@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/react';
-import type { FormEventHandler } from 'react';
 import React from 'react';
 import Email from '@/components/formComponent/Email';
 import Password from '@/components/formComponent/Password';

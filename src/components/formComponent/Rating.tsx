@@ -1,13 +1,19 @@
-import {Form, Rate} from "antd";
-import React from "react";
+import { Form, Rate } from 'antd';
+import React from 'react';
 
-export default function Rating() {
+interface ratingProps {
+	rate: number | undefined;
+}
+
+export default function Rating({ rate }: ratingProps) {
 	return (
 		<Form.Item
 			name="rate"
 			label="Рейтинг"
 			required
-			rules={[{ required: true }]}>
+			initialValue={rate}
+			rules={[{ required: true }]}
+		>
 			<Rate allowHalf></Rate>
 		</Form.Item>
 	);

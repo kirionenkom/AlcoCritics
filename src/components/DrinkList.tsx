@@ -1,10 +1,7 @@
 import React, { useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppSelector } from '@/redux/hooks';
 import Drink from './Drink';
 import { FilterFunctions, SortFunctions } from '@/utils/utils';
-import { getServerSession } from 'next-auth';
-import { useSession } from 'next-auth/react';
-import { getDrinks } from '@/redux/drinksSlice';
 
 export default function DrinkList() {
 	const {
@@ -13,8 +10,6 @@ export default function DrinkList() {
 		searchRequest,
 		alcoholType,
 	} = useAppSelector((state) => state.drinks);
-	const dispatch = useAppDispatch();
-	const { data: session } = useSession();
 	const memoizedDrinks = useMemo(() => {
 		return drinks
 			.filter(FilterFunctions[alcoholType])

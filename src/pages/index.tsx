@@ -1,28 +1,18 @@
 import Search from '@/components/Search';
 import DrinkList from '@/components/DrinkList';
 import React from 'react';
-import { getServerSession } from 'next-auth';
-import { authConfig } from '@/configs/auth';
-import { useSession } from 'next-auth/react';
-import Message from '@/components/Message';
-import { getDrinks } from '@/redux/drinksSlice';
+import Layout from '@/components/layout/layout';
+import { useCheckForSession } from '@/utils/hooks';
 import { useAppDispatch } from '@/redux/hooks';
+import { getAllDrinks } from '@/redux/drinksSlice';
 
 export default function Index() {
-	const { data: session } = useSession();
-	const dispatch = useAppDispatch();
-	if (session?.user?.name) {
-		dispatch(getDrinks(session?.user?.name));
-	}
-	if (!session) {
-		return (
-			<Message message="Вы не авторизовались. Пожалуйста, войдите в аккаунт" />
-		);
-	}
+	useCheckForSession();
+	useAppDispatch()(getAllDrinks());
 	return (
-		<>
+		<Layout title="Главная">
 			<Search />
 			<DrinkList />
-		</>
+		</Layout>
 	);
 }
