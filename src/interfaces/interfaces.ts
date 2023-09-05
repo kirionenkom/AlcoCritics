@@ -32,7 +32,7 @@ enum ModalType {
 	Delete,
 }
 
-export interface Drink extends Alcohol {
+export interface Drink {
 	title: string;
 	author_id: string;
 	taste: string;
