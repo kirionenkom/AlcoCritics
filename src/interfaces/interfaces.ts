@@ -33,6 +33,13 @@ enum ModalType {
 }
 
 export interface Drink extends Alcohol {
+	title: string;
+	author_id: string;
+	taste: string;
+	type: string;
+	price: number;
+	image_path: string;
+	description: string;
 	rate: number;
 }
 export interface DrinkWithAuthor extends Drink {
