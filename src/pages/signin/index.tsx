@@ -1,8 +1,6 @@
 import { SignInForm } from '@/components/SignInForm';
 import Link from 'next/link';
 import Layout from '@/components/layout/layout';
-import * as dotenv from 'dotenv'
-dotenv.config() // Load the environment variables
 
 export const formStyles = {
 	boxShadow: '0px 0 10px rgba(26, 31, 22, 0.3)',
@@ -15,7 +13,6 @@ export const formStyles = {
 };
 
 export default function Signin() {
-	console.log(`The connection URL is ${process.env.DATABASE_URL}`)
 	return (
 		<Layout title="Войти">
 			<div style={formStyles}>
