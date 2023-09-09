@@ -2,7 +2,7 @@ import multer from 'multer';
 import { Request, Response } from 'express';
 
 const fs = require('fs');
-const upload = multer({ dest: 'media' });
+const upload = multer({ dest: 'images' });
 
 export const config = {
 	api: {
