@@ -1,10 +1,12 @@
+require('dotenv').config();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	async rewrites() {
 		return [
 			{
 				source: '/api/:path*',
-				destination: 'https://alcocritics.vercel.app/:path*',
+				destination: `${process.env.NEXT_PUBLIC_URL}/:path*`,
 			},
 		];
 	},
