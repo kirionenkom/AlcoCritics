@@ -20,7 +20,6 @@ export default async function NewDrink(req: Request, res: Response) {
 			const { path } = req.file;
 			const pathWithExt = `${path}.jpg`;
 			console.log(pathWithExt);
-			fs.renameSync(path, pathWithExt);
 			return res
 				.status(200)
 				.json(pathWithExt.slice(6, pathWithExt.length).replaceAll('\\', '/'));
