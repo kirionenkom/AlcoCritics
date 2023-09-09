@@ -7,7 +7,6 @@ import { useAppDispatch } from '@/redux/hooks';
 import { getAllDrinks } from '@/redux/drinksSlice';
 
 export default function Index() {
-	useCheckForSession();
 	useAppDispatch()(getAllDrinks());
 	return (
 		<Layout title="Главная">
