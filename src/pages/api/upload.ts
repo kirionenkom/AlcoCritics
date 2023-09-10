@@ -1,31 +1,12 @@
-import multer from 'multer';
 import { Request, Response } from 'express';
+import { put } from '@vercel/blob';
 
-const fs = require('fs');
-const upload = multer({ dest: 'media' });
+export const runtime = 'edge';
 
-export const config = {
-	api: {
-		bodyParser: false,
-	},
-};
+export async function PUT(req: Request, res: Response) {
+	const { url } = await put('avatars/user-12345.png', req.body, {
+		access: 'public',
+	});
 
-export default async function NewDrink(req: Request, res: Response) {
-	try {
-		upload.single('image')(req, res, (err) => {
-			if (err || !req.file) {
-				console.error(err);
-				return res.status(500).json('Файл не найден');
-			}
-			const { path } = req.file;
-			const pathWithExt = `${path}.jpg`;
-			console.log(pathWithExt);
-			fs.renameSync(path, pathWithExt);
-			return res
-				.status(200)
-				.json(pathWithExt.slice(6, pathWithExt.length).replaceAll('\\', '/'));
-		});
-	} catch (error) {
-		return res.status(500).json('Произошла ошибка при запросе');
-	}
+	return res.json({ url });
 }
