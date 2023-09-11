@@ -3,7 +3,7 @@ import { useAppSelector } from '@/redux/hooks';
 import { LoadingStatus, ModalType } from '@/interfaces/interfaces';
 import ModalMessage from '@/components/ModalMessage';
 import Layout from '@/components/layout/layout';
-import { useCheckForSession } from '@/utils/hooks';
+import { useUser } from '@/utils/hooks';
 
 const formStyles = {
 	boxShadow: '0px 0 10px rgba(26, 31, 22, 0.3)',
@@ -16,7 +16,7 @@ const formStyles = {
 };
 
 export default function Index() {
-	useCheckForSession();
+	useUser();
 	const { loadingStatus, currentDrink } = useAppSelector(
 		(state) => state.drinks
 	);

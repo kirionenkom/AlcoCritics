@@ -2,13 +2,13 @@ import React from 'react';
 import User from '@/components/User';
 import Link from 'next/link';
 import Layout from '@/components/layout/layout';
-import { useCheckForSession } from '@/utils/hooks';
+import { useUser } from '@/utils/hooks';
 
 export default function Index() {
-	const session = useCheckForSession();
+	const user = useUser();
 	return (
 		<Layout title="Профиль">
-			<User user={session?.user ?? {}} />
+			<User user={user ?? {}} />
 			<div className="categories">
 				<Link href="/profile/drinks" style={{ textDecoration: 'none' }}>
 					<div className="category">

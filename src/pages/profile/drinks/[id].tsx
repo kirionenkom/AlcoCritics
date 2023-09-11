@@ -1,8 +1,8 @@
 import React from 'react';
 import DrinkPage from '@/components/DrinksPage';
-import { useCheckForSession } from '@/utils/hooks';
+import { useUser } from '@/utils/hooks';
 
 export default function Index() {
-	useCheckForSession();
+	useUser();
 	return <DrinkPage />;
 }

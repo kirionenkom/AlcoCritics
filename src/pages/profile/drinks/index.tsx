@@ -4,13 +4,13 @@ import { getDrinksByUser } from '@/redux/drinksSlice';
 import DrinkList from '@/components/DrinkList';
 import Search from '@/components/Search';
 import Layout from '@/components/layout/layout';
-import { useCheckForSession } from '@/utils/hooks';
+import { useUser } from '@/utils/hooks';
 
 export default function Index() {
-	const session = useCheckForSession();
+	const user = useUser();
 	const dispatch = useAppDispatch();
-	if (session?.user?.email) {
-		dispatch(getDrinksByUser(session.user.email));
+	if (user?.email) {
+		dispatch(getDrinksByUser(user.email));
 	}
 
 	return (

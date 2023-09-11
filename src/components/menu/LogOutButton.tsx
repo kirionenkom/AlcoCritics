@@ -18,7 +18,7 @@ export default function LogOutButton() {
 				onOk={async () => {
 					setIsModalOpen((prev) => !prev);
 					await signOut({
-						redirect: false,
+						redirect: true,
 					});
 				}}
 				onCancel={() => {

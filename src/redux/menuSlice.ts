@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type Menu = {
-	isSortMenuOpened: boolean,
-	isAlcoholMenuOpened: boolean,
+	isSortMenuOpened: boolean;
+	isAlcoholMenuOpened: boolean;
 };
 
 const initialState: Menu = {

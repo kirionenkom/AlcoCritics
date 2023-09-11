@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { ActionCreatorWithoutPayload } from '@reduxjs/toolkit';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { mockProviders } from 'next-auth/client/__tests__/helpers/mocks';
-import id = mockProviders.github.id;
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setSession } from '@/redux/userSlice';
 
 const useEscapeKeyDown = (callback: ActionCreatorWithoutPayload) => {
 	const dispatch = useDispatch();
@@ -20,16 +20,21 @@ const useEscapeKeyDown = (callback: ActionCreatorWithoutPayload) => {
 	}, []);
 };
 
-const useCheckForSession = () => {
-	const { data: session } = useSession();
-	const router = useRouter();
-	useEffect(() => {
-		if (!session) {
-			router.push('/signin');
-			return;
-		}
-	}, [session]);
-	return session;
+const useUser = () => {
+	const user = useAppSelector((state) => state.user);
+	if (!user.email) {
+		const { data: session } = useSession();
+		const dispatch = useAppDispatch();
+		dispatch(
+			setSession({
+				email: session?.user?.email,
+				name: session?.user?.name,
+				image: session?.user?.image,
+			})
+		);
+	}
+
+	return user;
 };
 
-export { useEscapeKeyDown, useCheckForSession };
+export { useEscapeKeyDown, useUser };

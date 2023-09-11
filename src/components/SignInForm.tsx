@@ -19,7 +19,7 @@ export default function SignInForm() {
 			password: values.password,
 			redirect: false,
 		});
-
+		console.log(res);
 		if (res && !res.error) {
 			await router.push('/');
 		} else {
