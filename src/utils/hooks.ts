@@ -22,9 +22,9 @@ const useEscapeKeyDown = (callback: ActionCreatorWithoutPayload) => {
 
 const useUser = () => {
 	const user = useAppSelector((state) => state.user);
+	const { data: session } = useSession();
+	const dispatch = useAppDispatch();
 	if (!user.email) {
-		const { data: session } = useSession();
-		const dispatch = useAppDispatch();
 		dispatch(
 			setSession({
 				email: session?.user?.email,
