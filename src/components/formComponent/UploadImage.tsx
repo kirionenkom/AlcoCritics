@@ -37,11 +37,12 @@ export default function UploadImage({ setFile, image }: UploadImageProps) {
 				defaultFileList={image ? fileList : []}
 				customRequest={async (req) => {
 					const formData = new FormData();
-					formData.append('image', req.file);
+					formData.set('image', req.file);
 					const res = await axios.post(
 						process.env.NEXT_PUBLIC_API_URL + '/upload',
 						formData
 					);
+					console.log(res.data);
 					if (res) {
 						setFile(res.data);
 						// @ts-ignore
