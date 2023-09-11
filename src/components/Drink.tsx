@@ -13,7 +13,7 @@ export default function Drink({ drink }: DrinkProps) {
 	return (
 		<div className="item">
 			<div className="item-image-container">
-				<img src={`..${drink.image_path}`} alt="" className="item-image" />
+				<img src={`${drink.image_path}`} alt="" className="item-image" />
 			</div>
 			<Link href={`${location}/${drink.id}`} className="item-link">
 				<h3 className="item-title">{drink.title}</h3>
