@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/react';
 import DrinkCardWithEdit from '@/components/DrinkCardWithEdit';
 
 export default function DrinkPage() {
-	const { data: session } = useSession();
+	const user = useAppSelector((state) => state.user);
 	let id = useRouter().query.id;
 	const dispatch = useAppDispatch();
 	useEffect(() => {
@@ -16,16 +16,14 @@ export default function DrinkPage() {
 			id = id[0];
 		}
 		if (id) {
-			dispatch(
-				getDrinkCard({ email: session?.user?.email ?? '', drink_id: id })
-			);
+			dispatch(getDrinkCard({ email: user?.email ?? '', drink_id: id }));
 		}
 	}, []);
 	const drink = useAppSelector((state) => state.drinks.currentDrink);
 	return (
 		<Layout title={drink?.title ?? ''}>
 			{drink &&
-				(drink.author_email === session?.user?.email ? (
+				(drink.author_email === user?.email ? (
 					<DrinkCardWithEdit drink={drink} />
 				) : (
 					<DrinkCard drink={drink} />

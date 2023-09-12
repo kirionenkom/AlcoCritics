@@ -7,6 +7,7 @@ import { useAppDispatch } from '@/redux/hooks';
 import { getAllDrinks } from '@/redux/drinksSlice';
 
 export default function Index() {
+	useUser();
 	useAppDispatch()(getAllDrinks());
 	return (
 		<Layout title="Главная">

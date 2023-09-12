@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rate } from 'antd';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { updateRate } from '@/redux/drinksSlice';
 import Image from 'next/image';
 import { DrinkWithAuthor } from '@/interfaces/interfaces';
@@ -12,7 +12,7 @@ interface DrinkCardProps {
 
 export default function DrinkCard({ drink }: DrinkCardProps) {
 	const dispatch = useAppDispatch();
-	const { data: session } = useSession();
+	const user = useAppSelector((state) => state.user);
 	if (drink) {
 		return (
 			<div className="item-card">
@@ -38,7 +38,7 @@ export default function DrinkCard({ drink }: DrinkCardProps) {
 								updateRate({
 									drink: drink,
 									newRate: value,
-									email: session?.user?.email ?? '',
+									email: user?.email ?? '',
 								})
 							)
 						}

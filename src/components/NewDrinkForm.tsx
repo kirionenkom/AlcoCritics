@@ -9,7 +9,7 @@ import Rating from '@/components/formComponent/Rating';
 import UploadImage from '@/components/formComponent/UploadImage';
 import Description from '@/components/formComponent/Description';
 import { addDrink } from '@/redux/drinksSlice';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { useSession } from 'next-auth/react';
 import { DrinkWithAuthor } from '@/interfaces/interfaces';
 
@@ -31,7 +31,7 @@ export default function NewDrinkForm({ drink }: newDrinkFormProps) {
 	const [form] = Form.useForm();
 	const [file, setFile] = useState(drink?.image_path ?? null);
 	const dispatch = useAppDispatch();
-	const { data: session } = useSession();
+	const user = useAppSelector((state) => state.user);
 	return (
 		<Form
 			initialValues={{
@@ -51,7 +51,7 @@ export default function NewDrinkForm({ drink }: newDrinkFormProps) {
 			encType="multipart/form-data"
 			requiredMark={false}
 			onFinish={async (values) => {
-				values = { ...values, image_path: file, email: session?.user?.email };
+				values = { ...values, image_path: file, email: user?.email };
 				dispatch(addDrink(values));
 			}}
 			labelCol={{ span: 5 }}
